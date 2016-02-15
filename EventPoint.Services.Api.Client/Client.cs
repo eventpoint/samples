@@ -117,10 +117,7 @@ namespace EventPoint.Services.Api
 
         public async Task<IntegratedSurveyModel> GetEvalForSessionAsync(string registrantKey, string sessionId)
         {
-            var data = new Dictionary<string, string>();
-            data.Add("sessionid", sessionId);
-            data.Add("registrantkey", registrantKey);
-            var res = await MakeAsyncWebRequest("Eval/Get-For-Session?sessionid=" + sessionId + "&registrantkey=" + registrantKey, data);
+            var res = await MakeAsyncWebRequest(String.Format("Eval/Get-For-Session?sessionid={0}&registrantkey={1}", sessionId, registrantKey), null);
             return FromJson<IntegratedSurveyModel>(res);
         }
 
