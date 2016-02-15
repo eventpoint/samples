@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventPoint.Services.Api.Client", "EventPoint.Services.Api.Client\EventPoint.Services.Api.Client.csproj", "{0396EF92-A831-4410-9F30-C0DF0527F99D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventPoint.Samples.Clients.ApiConsole", "EventPoint.Samples.Clients.ApiConsole\EventPoint.Samples.Clients.ApiConsole.csproj", "{2E0F3648-5BC0-4D53-92DC-EFE3A8A69BF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0396EF92-A831-4410-9F30-C0DF0527F99D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0396EF92-A831-4410-9F30-C0DF0527F99D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0396EF92-A831-4410-9F30-C0DF0527F99D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E0F3648-5BC0-4D53-92DC-EFE3A8A69BF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E0F3648-5BC0-4D53-92DC-EFE3A8A69BF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E0F3648-5BC0-4D53-92DC-EFE3A8A69BF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E0F3648-5BC0-4D53-92DC-EFE3A8A69BF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
