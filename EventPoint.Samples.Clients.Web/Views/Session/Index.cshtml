@@ -1,0 +1,19 @@
+﻿@model EventPoint.Samples.Clients.Web.ViewModels.SessionIndexViewModel
+@{
+    ViewBag.Title = "Sessions";
+}
+
+<div class="col-md-12">
+    <div class="h2">Sessions</div>
+</div>
+<div class="col-md-12">
+    @foreach(var session in Model.Sessions)
+    {
+        <div style="margin-bottom:10px">
+            <div>@session.Title</div>
+            <div>@Html.ActionLink("View Eval", "Session", "Eval", new { id = @session.Id }, null)</div>
+        </div>
+    }
+</div>
+
+

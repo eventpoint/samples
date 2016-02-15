@@ -1,4 +1,5 @@
 ﻿using EventPoint.Services.Api.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,11 +13,11 @@ namespace EventPoint.Services.Api
 {
     public class Client
     {
+        #region Configuration & Utility
         public string ApiKey { get; set; }
         public string AppName { get; set; }
         public string BaseUrl { get; set; }
         public bool UseGzipForRequests { get; set; }
-
 
         public Client(string apikey = "", string appname = "", string baseurl = "", bool usegzipforrequests = false)
         {
@@ -91,71 +92,6 @@ namespace EventPoint.Services.Api
             }
         }
 
-        public async Task<Category> GetCategoryAsync(string category)
-        {
-            var res = await MakeAsyncWebRequest(String.Format("Program/Category?find={0}", category), null);
-            return FromJson<Category>(res);
-        }
-
-        public async Task<List<Category>> GetCategories()
-        {
-            var res = await MakeAsyncWebRequest("Program/Categories?parent=", null);
-            return FromJson<List<Category>>(res);
-        }
-
-        public async Task<List<Category>> GetChildCategoriesAsync(string parent)
-        {
-            var res = await MakeAsyncWebRequest(String.Format("Program/Categories?parent={0}", parent), null);
-            return FromJson<List<Category>>(res);
-        }
-
-        public async Task<List<Registrant>> GetRegistrantsAsync()
-        {
-            var res = await MakeAsyncWebRequest("Program/Registrants", null);
-            return FromJson<List<Registrant>>(res);
-        }
-
-        public async Task<IntegratedSurveyModel> GetEvalForSessionAsync(string registrantKey, string sessionId)
-        {
-            var res = await MakeAsyncWebRequest(String.Format("Eval/Get-For-Session?sessionid={0}&registrantkey={1}", sessionId, registrantKey), null);
-            return FromJson<IntegratedSurveyModel>(res);
-        }
-
-        public async Task<List<RegistrantEvalResult>> GetEvalResultsAsync()
-        {
-            var res = await MakeAsyncWebRequest("Eval/Results", null);
-            return FromJson<List<RegistrantEvalResult>>(res);
-        }
-
-        public async Task<List<SessionMonitoringRecord>> GetSessionMonitoringRecordsAsync(string topicid = "", string timeslotid = "", string roomid = "")
-        {
-            var res = await MakeAsyncWebRequest(String.Format("SessionMonitor/Session-Scans?topicid={0}&timeslotid={1}&roomid={2}", topicid, timeslotid, roomid), null);
-            return FromJson<List<SessionMonitoringRecord>>(res);
-        }
-
-        public async Task<List<Speaker>> GetSpeakersAsync()
-        {
-            var res = await MakeAsyncWebRequest("Program/Speakers", null);
-            return FromJson<List<Speaker>>(res);
-        }
-
-        public async Task<List<Survey>> GetSurveysAsync()
-        {
-            var res = await MakeAsyncWebRequest("Program/Surveys", null);
-            return FromJson<List<Survey>>(res);
-        }
-
-        public async Task<List<Timeslot>> GetTimeslotsAsync()
-        {
-            var res = await MakeAsyncWebRequest("Program/Timeslots", null);
-            return FromJson<List<Timeslot>>(res);
-        }
-
-        public async Task<List<Topic>> GetTopicsAsync()
-        {
-            var res = await MakeAsyncWebRequest("Program/Topics", null);
-            return FromJson<List<Topic>>(res);
-        }
 
         public T FromJson<T>(string res)
         {
@@ -174,5 +110,87 @@ namespace EventPoint.Services.Api
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(value);
         }
+        #endregion
+
+        #region Category-related methods
+        public async Task<Category> GetCategoryAsync(string category)
+        {
+            var res = await MakeAsyncWebRequest(String.Format("Program/Category?find={0}", category), null);
+            return FromJson<Category>(res);
+        }
+
+        public async Task<List<Category>> GetCategories()
+        {
+            var res = await MakeAsyncWebRequest("Program/Categories?parent=", null);
+            return FromJson<List<Category>>(res);
+        }
+
+        public async Task<List<Category>> GetChildCategoriesAsync(string parent)
+        {
+            var res = await MakeAsyncWebRequest(String.Format("Program/Categories?parent={0}", parent), null);
+            return FromJson<List<Category>>(res);
+        }
+        #endregion
+
+        public async Task<List<Registrant>> GetRegistrantsAsync()
+        {
+            var res = await MakeAsyncWebRequest("Program/Registrants", null);
+            return FromJson<List<Registrant>>(res);
+        }
+
+        #region Survey & Eval-related methods
+        public async Task<IntegratedSurveyModel> GetEvalForSessionAsync(string registrantKey, string sessionId)
+        {
+            var res = await MakeAsyncWebRequest(String.Format("Eval/Get-For-Session?sessionid={0}&registrantkey={1}", sessionId, registrantKey), null);
+            return FromJson<IntegratedSurveyModel>(res);
+        }
+
+        public async Task<List<RegistrantEvalResult>> GetEvalResultsAsync()
+        {
+            var res = await MakeAsyncWebRequest("Eval/Results", null);
+            return FromJson<List<RegistrantEvalResult>>(res);
+        }
+
+        public async Task<List<Survey>> GetSurveysAsync()
+        {
+            var res = await MakeAsyncWebRequest("Program/Surveys", null);
+            return FromJson<List<Survey>>(res);
+        }
+        #endregion
+
+        public async Task<List<SessionMonitoringRecord>> GetSessionMonitoringRecordsAsync(string topicid = "", string timeslotid = "", string roomid = "")
+        {
+            var res = await MakeAsyncWebRequest(String.Format("SessionMonitor/Session-Scans?topicid={0}&timeslotid={1}&roomid={2}", topicid, timeslotid, roomid), null);
+            return FromJson<List<SessionMonitoringRecord>>(res);
+        }
+
+        public async Task<List<Speaker>> GetSpeakersAsync()
+        {
+            var res = await MakeAsyncWebRequest("Program/Speakers", null);
+            return FromJson<List<Speaker>>(res);
+        }
+
+        public async Task<List<Timeslot>> GetTimeslotsAsync()
+        {
+            var res = await MakeAsyncWebRequest("Program/Timeslots", null);
+            return FromJson<List<Timeslot>>(res);
+        }
+
+        #region Topic & Session-related methods
+        public async Task<List<Topic>> GetTopicsAsync()
+        {
+            var res = await MakeAsyncWebRequest("Program/Topics", null);
+            return FromJson<List<Topic>>(res);
+        }
+        public async Task<Topic> GetTopicAsync(string id)
+        {
+            var res = await MakeAsyncWebRequest(String.Format("Session/FindById?id={0}", id), null);
+            return FromJson<Topic>(res);
+        }
+
+
+
+        #endregion
+
     }
 }

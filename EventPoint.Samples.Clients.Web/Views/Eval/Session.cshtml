@@ -1,0 +1,44 @@
+﻿@model EventPoint.Samples.Clients.Web.ViewModels.EvalSessionViewModel
+@{
+    ViewBag.Title = "Session Eval";
+}
+
+<style>
+    .eval_question  
+    {
+        font-weight:bold;
+        padding:3px;
+    }
+
+    .eval_answer_group1
+    {
+        width:25%;
+        float:left;
+    }
+</style>
+
+<div class="col-md-12">
+    <div class="h2">Session Eval</div>
+</div>
+<div class="col-md-12">
+    <div>@Model.Session.Code</div>
+    <div>@Model.Session.Title</div>
+</div>
+
+<div class="col-md-12">
+    <div>@Model.Eval.Code</div>
+</div>
+
+
+<!--render the form-->
+<div class="col-md-12">
+        @foreach(var question in Model.Eval.Questions)
+        {
+            <div class="eval_question">@question.Text</div>   
+            foreach(var answer in question.Answers)
+            {
+                <div class="eval_answer_group1"><input type="radio" group="@question.Id" value="@answer.Id" />&nbsp;@answer.Text</div>
+            }
+        }
+    </table>
+</div>
