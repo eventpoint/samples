@@ -26,9 +26,9 @@ namespace EventPoint.Samples.Clients.ApiConsole
             Directory.CreateDirectory(FileData);
 
             //retrieves a whole bunch of data from the eventpoint api and saves it locally as .json
-            //await GetRawData();
+            await GetRawData();
 
-            //await GetEvalForSession("8d8ea6ef-52c5-e511-ab0e-00155d5066d7");
+            await GetEvalForSession("8d8ea6ef-52c5-e511-ab0e-00155d5066d7");
 
             //shows joining sessions to session types
             //await Sample01(true);

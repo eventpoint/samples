@@ -59,40 +59,47 @@ namespace EventPoint.Services.Api.Models
         public DateTime EvalOpen { get; set; }
         public DateTime EvalClose { get; set; }
         public int MinutesAfterSessionToOpen { get; set; }
-        public List<Question> Questions { get; set; }
+        public List<QuestionGroup> QuestionGroups { get; set; }
 
-        public class Question
+        public class QuestionGroup
         {
-            public string Id { get; set; }
-            public string QNum { get; set; }
-            public string QuestionType { get; set; }
-            public string Text { get; set; }
-            public string Label { get; set; }
-            public int Order { get; set; }
-            public bool Required { get; set; }
+            public string Name { get; set; }
             public string HeaderText { get; set; }
-            public int MinNumAnswers { get; set; }
-            public int MaxNumAnswers { get; set; }
-            public string MinNumAnswersAlert { get; set; }
-            public string MaxNumAnswersAlert { get; set; }
-            public int MaxLength { get; set; }
-            public List<Answer> Answers { get; set; }
-            public List<Rule> Rules { get; set; }
+            public int Order { get; set; }
+            public List<Question> Questions { get; set; }
 
-            public class Answer
+            public class Question
             {
                 public string Id { get; set; }
-                public int Num { get; set; }
+                public string QNum { get; set; }
+                public string QuestionType { get; set; }
                 public string Text { get; set; }
                 public string Label { get; set; }
-            }
+                public int Order { get; set; }
+                public bool Required { get; set; }
+                public int MinNumAnswers { get; set; }
+                public int MaxNumAnswers { get; set; }
+                public string MinNumAnswersAlert { get; set; }
+                public string MaxNumAnswersAlert { get; set; }
+                public int MaxLength { get; set; }
+                public List<Answer> Answers { get; set; }
+                public List<Rule> Rules { get; set; }
 
-            public class Rule
-            {
-                public string Operand { get; set; }
-                public string Comparison { get; set; }
-                public string Value { get; set; }
-                public string Action { get; set; }
+                public class Answer
+                {
+                    public string Id { get; set; }
+                    public int Num { get; set; }
+                    public string Text { get; set; }
+                    public string Label { get; set; }
+                }
+
+                public class Rule
+                {
+                    public string Operand { get; set; }
+                    public string Comparison { get; set; }
+                    public string Value { get; set; }
+                    public string Action { get; set; }
+                }
             }
         }
     }

@@ -4,41 +4,120 @@
 }
 
 <style>
-    .eval_question  
+    .eval_group
     {
+     
+    }
+    .eval_group_header
+    {
+        background-color:lightgrey;
+        padding:5px;
+        border:1px solid black;
+        font-size:larger;
         font-weight:bold;
-        padding:3px;
     }
 
-    .eval_answer_group1
+    .eval_question
+    {
+        margin-bottom:30px;
+    }
+
+    .eval_question_text
+    {
+        font-weight:bold;
+    }
+
+    .eval_answers
+    {
+    }
+
+    
+
+    .eval_rbl_4_answers
     {
         width:25%;
         float:left;
     }
+
+    .eval_rbl_5_answers
+    {
+        width:20%;
+        float:left;
+    }
+
+    .eval_rbl_6_answers
+    {
+        width:16%;
+        float:left;
+    }
+
+    .eval_rbl_9_answers
+    {
+        width:11%;
+        float:left;;
+    }
+
 </style>
 
 <div class="col-md-12">
     <div class="h2">Session Eval</div>
 </div>
-<div class="col-md-12">
-    <div>@Model.Session.Code</div>
-    <div>@Model.Session.Title</div>
-</div>
-
-<div class="col-md-12">
-    <div>@Model.Eval.Code</div>
+<div class="col-md-12" style="background:beige; border:1px solid gray; padding:10px; margin-bottom:25px;">
+    <div>Session Code: @Model.Session.Code</div>
+    <div>Session Title: @Model.Session.Title</div>
+    <div>Eval Name: @Model.Eval.Code</div>
 </div>
 
 
 <!--render the form-->
-<div class="col-md-12">
-        @foreach(var question in Model.Eval.Questions)
-        {
-            <div class="eval_question">@question.Text</div>   
-            foreach(var answer in question.Answers)
-            {
-                <div class="eval_answer_group1"><input type="radio" group="@question.Id" value="@answer.Id" />&nbsp;@answer.Text</div>
-            }
-        }
-    </table>
-</div>
+@foreach (var group in Model.Eval.QuestionGroups.OrderBy(x => x.Order))
+{
+    <div class="col-md-12">
+        <div class="eval_group">
+            <div class="eval_group_header">@group.HeaderText</div>
+        </div>
+    </div>
+    foreach(var question in group.Questions.OrderBy(x => x.Order))
+    {
+        <div class="col-md-12">  
+            <div class="eval_question">
+                <div class="eval_question_text">@question.Text</div>
+                <div class="eval_answers">
+                    @if(question.QuestionType == "1")
+                    {
+                        foreach (var answer in question.Answers)
+                        {
+                            <div><input type="checkbox" value="@answer.Id" />&nbsp;@answer.Text</div>
+                        }
+                    }
+                    else if (question.QuestionType == "2" && group.Name == "Group05")
+                    {
+                        foreach (var answer in question.Answers)
+                        {
+                            <div class="eval_rbl_@(question.Answers.Count())_answers">
+                                <div>@answer.Label &nbsp;</div>
+                                <div><input type="radio" group="@question.Id" value="@answer.Id"  />&nbsp;@answer.Text</div>
+                            </div>
+                        }
+                    }
+                    else if (question.QuestionType == "2")
+                    {
+                        foreach (var answer in question.Answers)
+                        {
+                            <div class="eval_rbl_@(question.Answers.Count())_answers" style="text-align:center">
+                                <div>@answer.Label &nbsp;</div>
+                                <div><input type="radio" group="@question.Id" value="@answer.Id" /></div>
+                            </div>
+                        }
+                    }
+                    else if (question.QuestionType == "4")
+                    {
+                        <div>
+                            <textarea class="form-control"></textarea>
+                        </div>   
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}
