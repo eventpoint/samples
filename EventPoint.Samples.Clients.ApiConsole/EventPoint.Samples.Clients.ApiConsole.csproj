@@ -57,12 +57,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\EventPoint.Services.Api.Client\EventPoint.Services.Api.Client.csproj">
-      <Project>{0396ef92-a831-4410-9f30-c0df0527f99d}</Project>
-      <Name>EventPoint.Services.Api.Client</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
