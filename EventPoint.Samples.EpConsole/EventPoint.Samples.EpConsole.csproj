@@ -7,8 +7,8 @@
     <ProjectGuid>{2E0F3648-5BC0-4D53-92DC-EFE3A8A69BF6}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EventPoint.Samples.Clients.ApiConsole</RootNamespace>
-    <AssemblyName>EventPoint.Samples.Clients.ApiConsole</AssemblyName>
+    <RootNamespace>EventPoint.Samples.EpConsole</RootNamespace>
+    <AssemblyName>EventPoint.Samples.EpConsole</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,8 +35,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EventPoint.Services.Api.Client, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EventPoint.Services.Api.Client.1.3.0.0\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\EventPoint.Services.Api.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EventPoint.Services.Api.Models, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EventPoint.Services.Api.Models.1.3.0.0\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\EventPoint.Services.Api.Models.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -49,7 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helper.cs" />
+    <Content Include="misc.txt" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
