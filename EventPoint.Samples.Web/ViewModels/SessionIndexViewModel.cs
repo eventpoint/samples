@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using EventPoint.Services.Api.Models;
 
-namespace EventPoint.Samples.Clients.Web.ViewModels
+namespace EventPoint.Samples.Web.ViewModels
 {
     public class SessionIndexViewModel
     {

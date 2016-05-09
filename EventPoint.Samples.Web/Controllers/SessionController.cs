@@ -6,15 +6,16 @@ using System.Web;
 using System.Web.Mvc;
 using EventPoint.Services.Api.Models;
 using EventPoint.Samples.Clients.Web.ViewModels;
+using Microsoft.Azure;
 
-namespace EventPoint.Samples.Clients.Web.Controllers
+namespace EventPoint.Samples.Web.Controllers
 {
     public class SessionController : Controller
     {
         // GET: Session
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Catalog()
         {
-            var client = Helper.ApiClient();
+            var client = await Helper.GetApiClient();
             var sessions = await client.GetTopicsAsync();
             
             var model = new SessionIndexViewModel
@@ -24,5 +25,7 @@ namespace EventPoint.Samples.Clients.Web.Controllers
 
             return View(model);
         }
+
+        
     }
 }

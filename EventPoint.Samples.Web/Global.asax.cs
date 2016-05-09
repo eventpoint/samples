@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace EventPoint.Samples.Clients.Web
+namespace EventPoint.Samples.Web
 {
     public class MvcApplication : System.Web.HttpApplication
     {

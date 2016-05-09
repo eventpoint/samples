@@ -45,7 +45,23 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EventPoint.Models.CMS, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EventPoint.Models.CMS.1.3.0.0\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\EventPoint.Models.CMS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EventPoint.Services.Api.Client, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EventPoint.Services.Api.Client.1.3.1.0\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\EventPoint.Services.Api.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EventPoint.Services.Api.Models, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EventPoint.Services.Api.Models.1.3.0.0\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\EventPoint.Services.Api.Models.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.2.1\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -118,6 +134,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\EvalSessionViewModel.cs" />
     <Compile Include="ViewModels\SessionIndexViewModel.cs" />
@@ -171,7 +188,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Session\Index.cshtml" />
+    <Content Include="Views\Session\Catalog.cshtml" />
     <Content Include="Views\Eval\Session.cshtml" />
   </ItemGroup>
   <ItemGroup>
