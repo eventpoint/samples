@@ -12,23 +12,28 @@ namespace EventPoint.Samples.Web.Controllers
     public class SessionController : Controller
     {
         [HttpGet]
-        public async Task<ActionResult> Catalog(string keyword = "", string a = "", string b = "", string c = "")
+        public async Task<ActionResult> Catalog(string keyword = "", string sessiontype = "", string track = "", string level = "")
         {           
             var client = await Helper.GetApiClient();
             var topics = await client.GetTopicsAsync();
             
             //filter sessions by category, if appropriate.  this is an AND filter.
-            if(!String.IsNullOrEmpty(a))
+            if(!String.IsNullOrEmpty(sessiontype))
             {
-                topics = topics.Where(x => x.CategoryIds.Contains(a)).ToList();
+                topics = topics.Where(x => x.CategoryIds.Contains(sessiontype)).ToList();
             }
-            if (!String.IsNullOrEmpty(b))
+            if (!String.IsNullOrEmpty(track))
             {
-                topics = topics.Where(x => x.CategoryIds.Contains(b)).ToList();
+                topics = topics.Where(x => x.CategoryIds.Contains(track)).ToList();
             }
-            if (!String.IsNullOrEmpty(c))
+            if (!String.IsNullOrEmpty(level))
             {
-                topics = topics.Where(x => x.CategoryIds.Contains(c)).ToList();
+                topics = topics.Where(x => x.CategoryIds.Contains(level)).ToList();
+            }
+
+            if(!String.IsNullOrEmpty(keyword))
+            {
+                topics = topics.Where(x => x.Title.ToLower().Contains(keyword.ToLower()) || x.Description.ToLower().Contains(keyword.ToLower())).ToList();
             }
 
             //join topics against the Session Type category so you can display the value along with other session details
@@ -45,15 +50,15 @@ namespace EventPoint.Samples.Web.Controllers
                            };
             
 
-            var filterA = await GetCategoryFilter("Session Type", a);
-            var filterB = await GetCategoryFilter("Track", b);
-            var filterC = await GetCategoryFilter("Level", c);
+            var sessionTypeFilter = await GetCategoryFilter("Session Type", sessiontype);
+            var trackFilter = await GetCategoryFilter("Track", track);
+            var levelFilter = await GetCategoryFilter("Level", level);
 
             var model = new SessionCatalogViewModel
             {
-                FilterA = filterA,
-                FilterB = filterB,
-                FilterC = filterC,
+                SessionTypeFilter = sessionTypeFilter,
+                TrackFilter = trackFilter,
+                LevelFilter = levelFilter,
                 Sessions = sessions.OrderBy(x => x.Code).Take(20).ToList()
             };
 

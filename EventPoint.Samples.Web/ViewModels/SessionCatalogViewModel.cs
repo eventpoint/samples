@@ -8,9 +8,9 @@ namespace EventPoint.Samples.Web.ViewModels
 {
     public class SessionCatalogViewModel
     {
-        public CategoryFilterViewModel FilterA { get; set; }
-        public CategoryFilterViewModel FilterB { get; set; }
-        public CategoryFilterViewModel FilterC { get; set; }
+        public CategoryFilterViewModel SessionTypeFilter { get; set; }
+        public CategoryFilterViewModel TrackFilter { get; set; }
+        public CategoryFilterViewModel LevelFilter { get; set; }
         public string Keyword { get; set; }
         public List<SessionViewModel> Sessions { get; set; }
     }
