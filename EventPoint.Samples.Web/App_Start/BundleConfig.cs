@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace EventPoint.Samples.Clients.Web
+namespace EventPoint.Samples.Web
 {
     public class BundleConfig
     {
