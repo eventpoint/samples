@@ -12,7 +12,7 @@ namespace EventPoint.Samples.Web.ViewModels
         public CategoryFilterViewModel FilterB { get; set; }
         public CategoryFilterViewModel FilterC { get; set; }
         public string Keyword { get; set; }
-        public List<Topic> Sessions { get; set; }
+        public List<SessionViewModel> Sessions { get; set; }
     }
 
     public class CategoryFilterViewModel
@@ -20,5 +20,13 @@ namespace EventPoint.Samples.Web.ViewModels
         public string Label { get; set; }
         public List<Category> Items { get; set; }
         public string SelectedId { get; set; }
+    }
+
+    public class SessionViewModel
+    {
+        public string Code { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string SessionType { get; set; }
     }
 }

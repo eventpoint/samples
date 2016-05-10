@@ -15,21 +15,34 @@ namespace EventPoint.Samples.Web.Controllers
         public async Task<ActionResult> Catalog(string keyword = "", string a = "", string b = "", string c = "")
         {           
             var client = await Helper.GetApiClient();
-            var sessions = await client.GetTopicsAsync();
+            var topics = await client.GetTopicsAsync();
             
             //filter sessions by category, if appropriate.  this is an AND filter.
             if(!String.IsNullOrEmpty(a))
             {
-                sessions = sessions.Where(x => x.CategoryIds.Contains(a)).ToList();
+                topics = topics.Where(x => x.CategoryIds.Contains(a)).ToList();
             }
             if (!String.IsNullOrEmpty(b))
             {
-                sessions = sessions.Where(x => x.CategoryIds.Contains(b)).ToList();
+                topics = topics.Where(x => x.CategoryIds.Contains(b)).ToList();
             }
             if (!String.IsNullOrEmpty(c))
             {
-                sessions = sessions.Where(x => x.CategoryIds.Contains(c)).ToList();
+                topics = topics.Where(x => x.CategoryIds.Contains(c)).ToList();
             }
+
+            //join topics against the Session Type category so you can display the value along with other session details
+            var sessiontypes = await client.GetChildCategoriesAsync("session type");
+            var sessions = from t in topics
+                           from st in sessiontypes
+                           where t.CategoryIds.Contains(st.Id)
+                           select new SessionViewModel
+                           {
+                               Code = t.Code,
+                               Title = t.Title,
+                               Description = t.Description,
+                               SessionType = st.Name
+                           };
             
 
             var filterA = await GetCategoryFilter("Session Type", a);

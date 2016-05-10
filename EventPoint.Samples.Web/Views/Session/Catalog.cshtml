@@ -7,40 +7,39 @@
     <div class="h2">Session Catalog</div>
     @using (Html.BeginForm("Catalog", "Session", FormMethod.Get))
     {
-
-
-    <table class="table">
-        <tr>
-            <td>@Model.FilterA.Label</td>
-            <td>@Html.DropDownList("a", new SelectList(Model.FilterA.Items, "Id", "Name", Model.FilterA.SelectedId), new { @class = "form-control" })</td>
-        </tr>
-        <tr>
-            <td>@Model.FilterB.Label</td>
-            <td>@Html.DropDownList("b", new SelectList(Model.FilterB.Items, "Id", "Name", Model.FilterB.SelectedId), new { @class = "form-control" })</td>
-        </tr>
-        <tr>
-            <td>@Model.FilterC.Label</td>
-            <td>@Html.DropDownList("c", new SelectList(Model.FilterC.Items, "Id", "Name", Model.FilterC.SelectedId), new { @class = "form-control" })</td>
-        </tr>
-        <tr>
-            <td>Keyword</td>
-            <td>@Html.TextBoxFor(x => x.Keyword, new { @class = "form-control" })</td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="submit" value="Submit" class="form-control pull-right" style="width:100px;" />
-            </td>
-        </tr>
-    </table>
+        <table class="table">
+            <tr>
+                <td>@Model.FilterA.Label</td>
+                <td>@Html.DropDownList("a", new SelectList(Model.FilterA.Items, "Id", "Name", Model.FilterA.SelectedId), new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>@Model.FilterB.Label</td>
+                <td>@Html.DropDownList("b", new SelectList(Model.FilterB.Items, "Id", "Name", Model.FilterB.SelectedId), new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>@Model.FilterC.Label</td>
+                <td>@Html.DropDownList("c", new SelectList(Model.FilterC.Items, "Id", "Name", Model.FilterC.SelectedId), new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>Keyword</td>
+                <td>@Html.TextBoxFor(x => x.Keyword, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Submit" class="form-control pull-right" style="width:100px;" />
+                </td>
+            </tr>
+        </table>
     }
     @foreach (var session in Model.Sessions)
     {
         <div style="margin-bottom:10px;">
-            <div>
+            <div class="clearfix">
                 <div class="pull-left" style="margin-right:25px">@session.Code</div>
                 <div class="pull-left">@session.Title</div>
             </div>
             <div>@session.Description</div>
+            <div>Session Type: @session.SessionType</div>
         </div>
     }
 </div>
