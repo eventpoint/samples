@@ -1,47 +1,56 @@
 ﻿@model EventPoint.Samples.Web.ViewModels.SessionCatalogViewModel
 @{
+    Layout = null;
     ViewBag.Title = "Session Catalog";
 }
-
+@Styles.Render("~/Content/css")
+@*@Styles.Render("~/EventPoint/less")*@
+<link href="http://eventpoint-demo-01-web.azurewebsites.net/content/eventpoint.css" rel="stylesheet" type="text/css">
 <div class="col-md-6">
-    <div class="h2">Session Catalog</div>
     @using (Html.BeginForm("Catalog", "Session", FormMethod.Get))
     {
-        <table class="table">
-            <tr>
-                <td>@Model.SessionTypeFilter.Label</td>
-                <td>@Html.DropDownList("sessiontype", new SelectList(Model.SessionTypeFilter.Items, "Id", "Name", Model.SessionTypeFilter.SelectedId), new { @class = "form-control" })</td>
-            </tr>
-            <tr>
-                <td>@Model.TrackFilter.Label</td>
-                <td>@Html.DropDownList("track", new SelectList(Model.TrackFilter.Items, "Id", "Name", Model.TrackFilter.SelectedId), new { @class = "form-control" })</td>
-            </tr>
-            <tr>
-                <td>@Model.LevelFilter.Label</td>
-                <td>@Html.DropDownList("level", new SelectList(Model.LevelFilter.Items, "Id", "Name", Model.LevelFilter.SelectedId), new { @class = "form-control" })</td>
-            </tr>
-            <tr>
-                <td>Keyword</td>
-                <td>@Html.TextBoxFor(x => x.Keyword, new { @class = "form-control" })</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="submit" value="Submit" class="form-control pull-right" style="width:100px;" />
-                </td>
-            </tr>
-        </table>
-    }
-    @foreach (var session in Model.Sessions)
-    {
-        <div style="margin-bottom:10px;">
-            <div class="clearfix">
-                <div class="pull-left" style="margin-right:25px">@session.Code</div>
-                <div class="pull-left">@session.Title</div>
+        <div class="filterset">
+            <div class="filterset__filter">
+                <div class="filterset__filter__label">@Model.SessionTypeFilter.Label</div>
+                <div class="filterset__filter__control">@Html.DropDownList("fSessionType", new SelectList(Model.SessionTypeFilter.Items, "Id", "Name", Model.SessionTypeFilter.SelectedId), new { @class = "form-control" })</div>
             </div>
-            <div>@session.Description</div>
-            <div>Session Type: @session.SessionType</div>
-        </div>
+            <div class="filterset__filter">
+                <div class="filterset__filter__label">@Model.TrackFilter.Label</div>
+                <div class="filterset__filter__control">@Html.DropDownList("fTrack", new SelectList(Model.TrackFilter.Items, "Id", "Name", Model.TrackFilter.SelectedId), new { @class = "form-control" })</div>
+            </div>
+            <div class="filterset__filter">
+                <div class="filterset__filter__label">@Model.LevelFilter.Label</div>
+                <div class="filterset__filter__control">@Html.DropDownList("fLevel", new SelectList(Model.LevelFilter.Items, "Id", "Name", Model.LevelFilter.SelectedId), new { @class = "form-control" })</div>
+            </div>
+            <div class="filterset__filter">
+                <div class="filterset__filter__label">@Model.SpecialtyFilter.Label</div>
+                <div class="filterset__filter__control">@Html.DropDownList("fSpecialty", new SelectList(Model.SpecialtyFilter.Items, "Id", "Name", Model.SpecialtyFilter.SelectedId), new { @class = "form-control" })</div>
+            </div>
+            <div class="filterset__filter">
+                <div class="filterset__filter__label">@Model.AudienceFilter.Label</div>
+                <div class="filterset__filter__control">@Html.DropDownList("fAudience", new SelectList(Model.AudienceFilter.Items, "Id", "Name", Model.AudienceFilter.SelectedId), new { @class = "form-control" })</div>
+            </div>
+            <div class="filterset__filter">
+                <div class="filterset__filter__label"></div>
+                <div class="filterset__filter__control"><input type="submit" value="Submit" class="form-control pull-right" style="width:100px;" /></div>
+            </div>
+        </div>       
     }
+    <div class="sessionlist">
+        @foreach (var session in Model.Sessions)
+        {
+            <div class="sessionlist__session">
+                <div class="sessionlist__session__code">@session.Code</div>
+                <div class="sessionlist__session__title">@session.Title</div>
+                <div class="sessionlist__session__description">@session.Description</div>
+                <div class="sessionlist__session__tag"><div class="sessionlist__session__tag__label">Session Type:</div> @session.SessionType</div>
+                <div class="sessionlist__session__tag"><div class="sessionlist__session__tag__label">Track:</div> @session.Track</div>
+                <div class="sessionlist__session__tag"><div class="sessionlist__session__tag__label">Level:</div> @session.Level</div>
+                <div class="sessionlist__session__tag"><div class="sessionlist__session__tag__label">Specalty:</div> @session.Specialty</div>
+                <div class="sessionlist__session__tag"><div class="sessionlist__session__tag__label">Audience:</div> @session.Audience</div>
+            </div>
+        }
+    </div>
 </div>
 
 

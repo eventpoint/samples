@@ -1,0 +1,40 @@
+﻿.filterset {
+  font-size: 24px;
+}
+.filterset__filter {
+  margin: 10px;
+}
+.filterset__filter__label {
+  font-size: 16px;
+  font-weight: normal;
+  width: 150px;
+  display: inline-block;
+}
+.filterset__filter__control {
+  width: 350px;
+  display: inline-block;
+}
+.sessionlist__session {
+  margin-bottom: 25px;
+}
+.sessionlist__session__code {
+  display: inline-block;
+  margin-right: 20px;
+  font-weight: bold;
+  color: red;
+}
+.sessionlist__session__title {
+  display: inline-block;
+  font-weight: bold;
+}
+.sessionlist__session__description {
+  margin-bottom: 5px;
+}
+.sessionlist__session__tag {
+  font-style: italic;
+}
+.sessionlist__session__tag__label {
+  font-weight: bold;
+  display: inline-block;
+}
+/*# sourceMappingURL=eventpoint.css.map */

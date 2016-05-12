@@ -11,6 +11,8 @@ namespace EventPoint.Samples.Web.ViewModels
         public CategoryFilterViewModel SessionTypeFilter { get; set; }
         public CategoryFilterViewModel TrackFilter { get; set; }
         public CategoryFilterViewModel LevelFilter { get; set; }
+        public CategoryFilterViewModel SpecialtyFilter { get; set; }
+        public CategoryFilterViewModel AudienceFilter { get; set; }
         public string Keyword { get; set; }
         public List<SessionViewModel> Sessions { get; set; }
     }
@@ -28,5 +30,9 @@ namespace EventPoint.Samples.Web.ViewModels
         public string Title { get; set; }
         public string Description { get; set; }
         public string SessionType { get; set; }
+        public string Track { get; set; }
+        public string Level { get; set; }
+        public string Specialty { get; set; }
+        public string Audience { get; set; }
     }
 }
