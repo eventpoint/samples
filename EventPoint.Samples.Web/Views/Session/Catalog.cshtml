@@ -1,11 +1,7 @@
 ﻿@model EventPoint.Samples.Web.ViewModels.SessionCatalogViewModel
 @{
-    Layout = null;
     ViewBag.Title = "Session Catalog";
 }
-@Styles.Render("~/Content/css")
-@*@Styles.Render("~/EventPoint/less")*@
-<link href="http://eventpoint-demo-01-web.azurewebsites.net/content/eventpoint.css" rel="stylesheet" type="text/css">
 <div class="col-md-6">
     @using (Html.BeginForm("Catalog", "Session", FormMethod.Get))
     {
