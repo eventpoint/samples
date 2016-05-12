@@ -97,12 +97,5 @@ namespace EventPoint.Samples.Web.Controllers
             };
         }
 
-
-        public ActionResult Mock()
-        {
-            return View();
-        }
-
-        
     }
 }
